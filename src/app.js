@@ -1,10 +1,12 @@
 const express = require("express");
+const path = require("path");
 const notesmodel = require("./db/model/notes")
-
-
 
 const app = express()
 app.use(express.json())
+
+// Serve static files from public folder
+app.use(express.static(path.join(__dirname, '../public')))
 
 app.get("/", (req, res) => {
     res.status(200).json({
