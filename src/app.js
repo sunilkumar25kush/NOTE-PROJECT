@@ -6,6 +6,18 @@ const notesmodel = require("./db/model/notes")
 const app = express()
 app.use(express.json())
 
+app.get("/", (req, res) => {
+    res.status(200).json({
+        message: "Welcome to Notes API",
+        endpoints: {
+            GET: "/notes",
+            POST: "/notes",
+            PATCH: "/notes/:id",
+            DELETE: "/notes/:id"
+        }
+    })
+})
+
 app.post("/notes", async (req, res) => {
 
     await notesmodel.create({
